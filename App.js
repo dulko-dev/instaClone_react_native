@@ -15,7 +15,6 @@ if (firebase.apps.length === 0) {
   firebase.initializeApp(firebaseConfig);
 }
 
-import { Text, View } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "@react-navigation/stack";
 import { AppProvider } from "./context";
@@ -23,6 +22,7 @@ import Landing from "./components/Authorization/Landing";
 import Register from "./components/Authorization/Register";
 import Login from "./components/Authorization/Login";
 import UserPage from "./components/UserPage";
+import Add from "./components/AddPage";
 
 const Stack = createStackNavigator();
 
@@ -46,6 +46,7 @@ export default function App() {
           {loaded ? (
             <>
               <Stack.Screen name="userPage" component={UserPage} />
+              <Stack.Screen name="Add" component={Add} />
             </>
           ) : (
             <>
