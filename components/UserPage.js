@@ -1,7 +1,11 @@
 import React, { useContext, useEffect } from "react";
-import { View, Text } from "react-native";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { AppContext } from "../context";
 import firebase from "firebase";
+import Main from "./Main";
+import LogOut from './Authorization/LogOut'
+
+const Tab = createBottomTabNavigator();
 
 const UserPage = () => {
   const { userName } = useContext(AppContext);
@@ -16,9 +20,10 @@ const UserPage = () => {
   }, [name]);
 
   return (
-    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }}>
-      <Text>Welcome {name} !!!</Text>
-    </View>
+    <Tab.Navigator>
+      <Tab.Screen name="Main" component={Main} />
+      <Tab.Screen name='LogOut' component={LogOut} />
+    </Tab.Navigator>
   );
 };
 

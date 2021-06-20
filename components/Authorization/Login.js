@@ -1,13 +1,12 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { View, Button, TextInput } from "react-native";
 import firebase from "firebase";
 
-export const Login = () => {
-  const [name, setName] = useState("");
+const Login = () => {
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const onSignUp = () => {
-    const { email, password } = this.state;
     firebase
       .auth()
       .signInWithEmailAndPassword(email, password)

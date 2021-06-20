@@ -33,6 +33,8 @@ export default function App() {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         setLoaded(true);
+      } else {
+        setLoaded(false);
       }
     });
   }, [loaded]);
