@@ -2,17 +2,11 @@ import React, { Component } from "react";
 import { View, Button, TextInput } from "react-native";
 import firebase from "firebase";
 
-export class Login extends Component {
-  constructor(props) {
-    super(props);
+export const Login = () => {
+  const [name, setName] = useState("");
+  const [password, setPassword] = useState("");
 
-    this.state = {
-      email: "",
-      password: "",
-    };
-  }
-
-  onSignUp = () => {
+  const onSignUp = () => {
     const { email, password } = this.state;
     firebase
       .auth()
@@ -21,23 +15,21 @@ export class Login extends Component {
       .catch((err) => console.log(err));
   };
 
-  render() {
-    return (
-      <View>
-        <TextInput
-          placeholder="email"
-          onChangeText={(email) => this.setState({ email })}
-        />
-        <TextInput
-          placeholder="password"
-          onChangeText={(password) => this.setState({ password })}
-          secureTextEntry={true}
-        />
+  return (
+    <View>
+      <TextInput
+        placeholder="email"
+        onChangeText={(email) => setEmail(email)}
+      />
+      <TextInput
+        placeholder="password"
+        onChangeText={(password) => setPassword(password)}
+        secureTextEntry={true}
+      />
 
-        <Button title="Login" onPress={() => this.onSignUp()} />
-      </View>
-    );
-  }
-}
+      <Button title="Login" onPress={() => onSignUp()} />
+    </View>
+  );
+};
 
 export default Login;
