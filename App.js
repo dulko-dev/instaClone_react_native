@@ -46,7 +46,7 @@ export default function App() {
           {loaded ? (
             <>
               <Stack.Screen name="userPage" component={UserPage} />
-              <Stack.Screen name="Add" component={Add} />
+              <Stack.Screen name="Add" component={Add}  />
             </>
           ) : (
             <>
