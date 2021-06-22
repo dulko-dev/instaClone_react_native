@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import { View, Button, Image, TextInput, Text } from "react-native";
 import * as ImagePicker from "expo-image-picker";
 import firebase from "firebase";
-require("firebase/firestore");
-require("firebase/firebase-storage");
+import "firebase/firestore";
+import "firebase/firebase-storage";
 
 export default function Add({ navigation }) {
   const [image, setImage] = useState(null);
@@ -36,6 +36,8 @@ export default function Add({ navigation }) {
   };
 
   const upload = async () => {
+    if (title.length === 0) return;
+
     const response = await fetch(image);
     const blob = await response.blob();
 
@@ -51,13 +53,12 @@ export default function Add({ navigation }) {
       setDisplay(false);
       navigation.navigate("Home");
     }, 3000);
-
   };
 
   return (
     <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
       {display && <Text>Your image has been save</Text>}
-      <Button title="Pick an image from camera roll" onPress={pickImage} />
+      <Button title="Upload an image" onPress={pickImage} />
       {image && (
         <Image source={{ uri: image }} style={{ width: 200, height: 200 }} />
       )}

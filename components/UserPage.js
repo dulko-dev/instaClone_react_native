@@ -1,7 +1,6 @@
 import React, { useContext, useEffect } from "react";
 import { Entypo, Ionicons, FontAwesome } from "@expo/vector-icons";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
-import Icon from 'react-native-vector-icons/FontAwesome5';
 import { AppContext } from "../context";
 import firebase from "firebase";
 import Main from "./Main";
@@ -61,7 +60,15 @@ const UserPage = () => {
           ),
         }}
       />
-      <Tab.Screen name="LogOut" component={LogOut} />
+      <Tab.Screen
+        name="LogOut"
+        component={LogOut}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="sign-out" color={color} size={24} />
+          ),
+        }}
+      />
     </Tab.Navigator>
   );
 };
